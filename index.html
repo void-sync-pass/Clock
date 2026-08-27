@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Цифровые часы с будильником</title>
+<link rel="stylesheet" href=".css/style.css">
+</head>
+<body>
+
+<div class="profile" id="profile">
+  <button class="profile-button" id="profileButton" type="button" aria-expanded="false" aria-controls="profileMenu">
+    <span class="profile-avatar" id="profileAvatar">П</span>
+    <span class="profile-name" id="profileName">Профиль</span>
+  </button>
+  <div class="profile-menu" id="profileMenu" hidden>
+    <div class="profile-menu-title">Ваш профиль</div>
+    <label for="profileNameInput">Имя</label>
+    <input type="text" id="profileNameInput" maxlength="30" placeholder="Введите имя">
+    <button class="profile-save" id="profileSave" type="button">Сохранить</button>
+    <div class="profile-location" id="profileLocation"></div>
+    <div class="timezone-control">
+      <label for="timezoneCountry">Страна</label>
+      <select id="timezoneCountry">
+        <option value="local">Местное время устройства</option>
+        <option value="korea">Южная Корея</option>
+        <option value="kazakhstan">Казахстан</option>
+      </select>
+      <label for="timezoneCity">Город</label>
+      <select id="timezoneCity"></select>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="clock-card">
+    <div id="time">00:00<span class="seconds">:00</span></div>
+    <div id="date">—</div>
+  </div>
+
+  <div class="add-alarm-card">
+    <h2>Новый будильник</h2>
+    <form class="add-alarm-form" id="alarmForm">
+      <input type="time" id="alarmTimeInput" required>
+      <input type="text" id="alarmLabelInput" placeholder="Название (необязательно)">
+      <button type="submit" class="add-btn">Добавить</button>
+    </form>
+    <div class="days-select" id="daysSelect">
+      <div class="day-btn" data-day="1">Пн</div>
+      <div class="day-btn" data-day="2">Вт</div>
+      <div class="day-btn" data-day="3">Ср</div>
+      <div class="day-btn" data-day="4">Чт</div>
+      <div class="day-btn" data-day="5">Пт</div>
+      <div class="day-btn" data-day="6">Сб</div>
+      <div class="day-btn" data-day="0">Вс</div>
+    </div>
+  </div>
+
+  <div class="alarms-card">
+    <h2>Будильники</h2>
+    <div id="alarmsList"></div>
+  </div>
+</div>
+
+<div class="ringing-overlay" id="ringingOverlay">
+  <div class="bell">⏰</div>
+  <div class="ring-time" id="ringTime">07:00</div>
+  <div class="ring-label" id="ringLabel">Будильник</div>
+  <button class="stop-btn" id="stopBtn" type="button">Остановить</button>
+  <button class="snooze-btn" id="snoozeBtn" type="button">Отложить на 5 мин</button>
+</div>
+
+<audio id="alarmSound" loop>
+  <source src="https://cdn.freesound.org/previews/536/536108_9265818-lq.mp3" type="audio/mpeg">
+</audio>
+
+<script src=".Json/Script.js"></script>
+</body>
+</html>

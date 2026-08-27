@@ -1,0 +1,438 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f 0%, #2d2d44 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #fff;
+}
+
+.profile {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 5px 12px 5px 5px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-avatar {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #7aa2ff;
+  color: #fff;
+  font-weight: 700;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 260px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: #292940;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.profile-menu-title {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.profile-menu label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.profile-menu input {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 10px;
+}
+
+.profile-save {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 12px;
+  background: #5b7fff;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.profile-save:hover,
+.profile-button:hover {
+  opacity: 0.9;
+}
+
+.profile-location {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.profile-menu .timezone-control {
+  max-width: none;
+  margin: 16px 0 0;
+  opacity: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+}
+
+.clock-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+
+#time {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 20px rgba(122, 162, 255, 0.5);
+}
+
+#time .seconds {
+  font-size: 32px;
+  opacity: 0.7;
+}
+
+#date {
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.6;
+  text-transform: capitalize;
+}
+
+.timezone-control {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 300px;
+  margin: 24px auto 0;
+  text-align: left;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.timezone-control select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.timezone-control option {
+  background: #2d2d44;
+  color: #fff;
+}
+
+.add-alarm-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.add-alarm-card h2,
+.alarms-card h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  opacity: 0.85;
+}
+
+.add-alarm-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input[type="time"],
+input[type="text"] {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  flex: 1;
+  min-width: 100px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #7aa2ff, #5b7fff);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.add-btn:active {
+  transform: scale(0.96);
+}
+
+.add-btn:hover {
+  opacity: 0.9;
+}
+
+.days-select {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.day-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.15s;
+}
+
+.day-btn.active {
+  background: #5b7fff;
+  opacity: 1;
+  border-color: #5b7fff;
+}
+
+.alarms-card h2 {
+  padding: 0 4px;
+}
+
+.alarm-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  transition: opacity 0.2s;
+}
+
+.alarm-item.disabled {
+  opacity: 0.4;
+}
+
+.alarm-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alarm-time {
+  font-size: 26px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.alarm-meta {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.alarm-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  transition: 0.2s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+input:checked + .slider {
+  background-color: #5b7fff;
+}
+
+input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.delete-btn {
+  background: rgba(255, 90, 90, 0.15);
+  border: 1px solid rgba(255, 90, 90, 0.3);
+  color: #ff8080;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 90, 90, 0.25);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px 10px;
+  opacity: 0.4;
+  font-size: 14px;
+}
+
+.ringing-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 20, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.ringing-overlay.active {
+  display: flex;
+}
+
+.ringing-overlay .bell {
+  font-size: 80px;
+  animation: shake 0.4s infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+.ringing-overlay .ring-time {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.ringing-overlay .ring-label {
+  font-size: 18px;
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+
+.stop-btn {
+  background: linear-gradient(135deg, #ff7a7a, #ff5b5b);
+  border: none;
+  border-radius: 14px;
+  padding: 16px 50px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.snooze-btn {
+  margin-top: 14px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  padding: 12px 40px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .profile {
+    top: 12px;
+    right: 12px;
+  }
+
+  .profile-name {
+    display: none;
+  }
+}
