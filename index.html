@@ -10,14 +10,11 @@
 
 <div class="profile" id="profile">
   <button class="profile-button" id="profileButton" type="button" aria-expanded="false" aria-controls="profileMenu">
-    <span class="profile-avatar" id="profileAvatar">П</span>
-    <span class="profile-name" id="profileName">Профиль</span>
+    <span class="profile-avatar" aria-hidden="true">⚙</span>
+    <span class="profile-name">Настройки</span>
   </button>
   <div class="profile-menu" id="profileMenu" hidden>
-    <div class="profile-menu-title">Ваш профиль</div>
-    <label for="profileNameInput">Имя</label>
-    <input type="text" id="profileNameInput" maxlength="30" placeholder="Введите имя">
-    <button class="profile-save" id="profileSave" type="button">Сохранить</button>
+    <div class="profile-menu-title">Настройки</div>
     <div class="profile-location" id="profileLocation"></div>
     <div class="timezone-control">
       <label for="timezoneCountry">Страна</label>

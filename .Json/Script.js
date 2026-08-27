@@ -20,10 +20,6 @@ const alarmSound = document.getElementById("alarmSound");
 const profile = document.getElementById("profile");
 const profileButton = document.getElementById("profileButton");
 const profileMenu = document.getElementById("profileMenu");
-const profileAvatar = document.getElementById("profileAvatar");
-const profileName = document.getElementById("profileName");
-const profileNameInput = document.getElementById("profileNameInput");
-const profileSave = document.getElementById("profileSave");
 const profileLocation = document.getElementById("profileLocation");
 
 let selectedDays = new Set();
@@ -49,21 +45,6 @@ function writeStorage(key, value) {
         return false;
     }
 }
-
-const savedProfileName = readStorage("digitalClockProfileName");
-
-function updateProfile(name) {
-    const cleanName = name.trim();
-    const displayName = cleanName || "Профиль";
-
-    profileName.textContent = displayName;
-    profileAvatar.textContent = displayName === "Профиль"
-        ? "П"
-        : displayName.charAt(0).toUpperCase();
-    profileNameInput.value = cleanName;
-}
-
-updateProfile(savedProfileName);
 
 const savedTimezone = readStorage(TIMEZONE_STORAGE_KEY);
 const savedCountryValue = readStorage(TIMEZONE_COUNTRY_STORAGE_KEY);
@@ -473,32 +454,6 @@ profileButton.addEventListener("click", () => {
 
     profileMenu.hidden = isOpen;
     profileButton.setAttribute("aria-expanded", String(!isOpen));
-
-    if (!isOpen) {
-        profileNameInput.focus();
-    }
-});
-
-profileSave.addEventListener("click", () => {
-    const name = profileNameInput.value.trim();
-
-    updateProfile(name);
-    writeStorage("digitalClockProfileName", name);
-    profileMenu.hidden = true;
-    profileButton.setAttribute("aria-expanded", "false");
-});
-
-profileNameInput.addEventListener("keydown", event => {
-    if (event.key === "Enter") {
-        profileSave.click();
-    }
-});
-
-profileNameInput.addEventListener("change", () => {
-    const name = profileNameInput.value.trim();
-
-    updateProfile(name);
-    writeStorage("digitalClockProfileName", name);
 });
 
 document.addEventListener("click", event => {
